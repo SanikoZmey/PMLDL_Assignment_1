@@ -1,5 +1,5 @@
-# Kurdyukov Alexander (BS21-AI-01, a.kurdyukov@innopolis.university)
-### To use this repo (in the way its creator was used to) it is needed to have an ability to run jupyter notebooks. This can be achieved in several ways:
+## Kurdyukov Alexander (BS21-AI-01, a.kurdyukov@innopolis.university)
+### To use this repo (in the way its creator was) it is needed to have an ability to run jupyter notebooks. This can be achieved in several ways:
 1) Use [Google Colab](https://colab.research.google.com) and manualy config the kernel 
 2) Create [Python virtual environment](https://docs.python.org/3/tutorial/venv.html) and [run local jupyter server](https://www.codecademy.com/article/how-to-use-jupyter-notebooks) with [confugured kernel](https://ipython.readthedocs.io/en/stable/install/kernel_install.html) (Recommended)
 
@@ -11,13 +11,13 @@
 5) **Please note, that it is needed to install [PyTorch](https://pytorch.org/get-started/locally/) in appropriate for the user configuration manually!**
 6) In activated virtual environment execute **```ipython kernel install --name "NAME_OF_THE_KERNEL" --user```** to add virtual environment as Python Kernel and to further use it to run jupyter notebooks
 7) Execute **```jupyter notebook```** and wait untill the browser window with navigated repo will be opened
-8) Enter user password (if is needed) and navigate in the opened window **`/notebooks`** subdirectory and open any wanted notebook
+8) Enter user password (if needed) and navigate in the opened window **`/notebooks`** subdirectory and open any wanted notebook
 9) In **`Kernels`** tab choose kernel from step **`4)`** 
 
 ### **`At this moment user should have an ability to run jupyter notebook's code blocks in any manner`**
 
 ### Some comments about the overall structure of the repo:
-1) It was decided not to create directories for notebooks with some "code tests" and for python scripts for training/predicting/visualizing. The logic begind it is following: if the user can run code cells in jupyter notebooks in `notebooks/` directory then it is not needed to create any python scripts with argument parsing since it will be almost identical to just deconstructing jupyter notebooks that sounded like waste of time for the creator of this repo.
+1) It was decided not to create directories for notebooks with some "code tests" and for python scripts for training/predicting/visualizing. The logic behind it is following: if the user can run code cells in jupyter notebooks in `notebooks/` directory then it is not needed to create any python scripts with argument parsing since it will be almost identical to just deconstructing jupyter notebooks that sounded like waste of time for the creator of this repo.
 2) It was decided not to create vizualizatons of the results in the `reports/` directory since all vizuals can be found as output for cells in jupyter notebooks in `notebooks/` directory. If it is needed to see some log info - please read `"Visualization of results of trainig"` section of README.md
 
 ### Some comments about the dataset that was used to train models and about the overall structure of notebooks:
@@ -25,12 +25,12 @@
 2) The user can find two notebooks with the same preparation of data and similar structure, but with diffrerent language models: [T5-small](https://huggingface.co/t5-small) and [Bart-base-4096](https://huggingface.co/ccdv/lsg-bart-base-4096). 
 3) All the models(pretrained) are firstly downloaded, then the appropriate pretraned tokenizers are downloaded
 4) After all the downloads whole datasets are tokenized and model objects are created
-5) Data collators, functions for calculating Scare-blue score are then created
+5) Data collators, functions for calculating metrics: BLEU and Avg. generated sentence lenght are then created
 6) Finally, Seq2Seq trainers are configured for both models and the process of training can be started
 
 ### And now it is time to speak about hyperparameters for parameters that are considered as "configurable":
 1) Partition of the dataset that is taken for a training(it is usefull when it is needed for  "fast check" of the training process)
-2) [Models](https://huggingface.co/models), tokenizers, and final model structures(Encoder-Decoder or just the initial model)
+2) [Models](https://huggingface.co/models), tokenizers, and final model structures(manually created Encoder-Decoder or just the initial model)
 3) Name of the model/checkpoint where the trained model state will be saved
 4) Hyperparameters of training (in the notebooks they are arguments of Seq2SeqTrainer) such as: **`learning rate`**, **`lr schedulers`**, **`warmup steps`**, **`weights decay rate`** and many more.
 
